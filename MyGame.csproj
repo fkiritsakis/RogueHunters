@@ -21,4 +21,8 @@
     <PackageReference Include="SadConsole.Extended" Version="10.10.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
 </Project>
