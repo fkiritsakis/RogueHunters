@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\NewFolder\**" />
+    <EmbeddedResource Remove="Assets\NewFolder\**" />
+    <None Remove="Assets\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="SadConsole" />
     <Using Include="SadRogue.Primitives" />
     <Using Include="SadConsole.Console" Alias="Console" />
@@ -22,7 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\NewFolder\" />
+    <None Update="Assets\Screens\TittleScreen.xp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
