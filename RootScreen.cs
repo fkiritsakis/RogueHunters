@@ -25,7 +25,7 @@ class RootScreen : ScreenObject
 
         //Get the rexpaint image and save it as a variable
         var rexDocument = SadConsole.Readers.REXPaintImage.Load(System.IO.File.OpenRead(_tittleScreenPath));
-
+        
         var surface = rexDocument.ToCellSurface();
         var baseLayer = surface[0];
 
