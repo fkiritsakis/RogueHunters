@@ -3,6 +3,7 @@
 using SadConsole;
 using SadConsole.UI;
 using SadConsole.UI.Controls;
+using SadConsole.Readers;
 using SadRogue.Primitives;
 using System;
 
@@ -23,27 +24,41 @@ class RootScreen : ScreenObject
 
         centerX = (GameSettings.GAME_WIDTH - btnWidth) / 2;
 
-        //Get the rexpaint image and save it as a variable
-        var rexDocument = SadConsole.Readers.REXPaintImage.Load(System.IO.File.OpenRead(_tittleScreenPath));
+        // Open Filestream to .xp file
+        using (FileStream stream = File.OpenRead(_tittleScreenPath)) 
+        {
+            // Load image from stream
+            REXPaintImage rexImage = REXPaintImage.Load(stream);
 
-        var surface = rexDocument.ToCellSurface();
-        var baseLayer = surface[0];
+            // Convert Rexpaint Image to CellSurface
+            ICellSurface cellSurface = rexImage.ToCellSurface()[0];
+
+            // Wrap the surface inside a screensurface so it can be rendered
+            _mainSurface =  new ScreenSurface(cellSurface);
+
+            //Add it to active game screen
+            //GameHost.Instance.Screen.Children.Add(_mainSurface);
+        }
 
         // Create a surface that's the same size as the screen.
-        _mainSurface = new ScreenSurface(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
-
-        baseLayer.Copy(_mainSurface.Surface);
+        //_mainSurface = new ScreenSurface(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
 
         _uiConsole = new ControlsConsole(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
 
         _uiConsole.UseKeyboard = true;
         _uiConsole.UseMouse = true;
 
+        // set default background to transparent
+        _uiConsole.Surface.DefaultBackground = Color.Transparent;
+
+        // Clear surface so it adopts transparent color
+        _uiConsole.Surface.Clear();
+
         //Create the buttons
         var btnNewHunter = new Button(btnWidth, btnHeight) 
         {
             Text = "New Hunter",
-            Position = new Point(centerX, 12)
+            Position = new Point(centerX, 40)
         };
         btnNewHunter.Click += BtnNewHunter_Click;
         _uiConsole.Controls.Add(btnNewHunter);
@@ -51,28 +66,28 @@ class RootScreen : ScreenObject
         var btnStartHutning = new Button(btnWidth, btnHeight)
         {
             Text = "Start Hunting",
-            Position = new Point(centerX, 14)
+            Position = new Point(centerX, 42)
         };
         _uiConsole.Controls.Add(btnStartHutning);
 
         var btnMonstrum = new Button(btnWidth, btnHeight)
         {
             Text = "Monstrum",
-            Position = new Point(centerX, 16)
+            Position = new Point(centerX, 44)
         };
         _uiConsole.Controls.Add(btnMonstrum);
 
         var btnOptions = new Button(btnWidth, btnHeight)
         {
             Text = "Options",
-            Position = new Point(centerX, 18)
+            Position = new Point(centerX, 46)
         };
         _uiConsole.Controls.Add(btnOptions);
 
         var btnExit = new Button(btnWidth, btnHeight)
         {
             Text = "Exit",
-            Position = new Point(centerX, 20)
+            Position = new Point(centerX, 48)
         };
         btnExit.Click += BtnQuit_Click;
         _uiConsole.Controls.Add(btnExit);
