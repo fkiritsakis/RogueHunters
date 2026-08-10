@@ -35,14 +35,9 @@ class RootScreen : ScreenObject
 
             // Wrap the surface inside a screensurface so it can be rendered
             _mainSurface =  new ScreenSurface(cellSurface);
-
-            //Add it to active game screen
-            //GameHost.Instance.Screen.Children.Add(_mainSurface);
         }
-
-        // Create a surface that's the same size as the screen.
-        //_mainSurface = new ScreenSurface(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
-
+        
+        //Create a new ControlConsole to hold the menu buttons
         _uiConsole = new ControlsConsole(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
 
         _uiConsole.UseKeyboard = true;
