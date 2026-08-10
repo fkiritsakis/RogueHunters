@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Wendigo",
+    "description": "A monster description.",
+    "weaknesses": [
+      "Silver",
+      "Fire"
+    ],
+    "lore": "It is believed that a traveler can turn into a Wendigo when forced to consume human flesh, either for survival or during some twisted ritual",
+    "threat_level": 1,
+    "origin": "Native American Folklore" 
+  }
+]

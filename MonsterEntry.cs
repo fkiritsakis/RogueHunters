@@ -1,25 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text.Json.Serialization;
 
 namespace RogueHunters
 {
-    class MonsterEntry
+    public enum ThreatLevel 
     {
-        public string Name; //Monster Name
-        public string Description; //Visual Description of the Monster
-        public string Lore; // Lore from onlnine sources etc to make it seem more real
-        public string[] Weaknesses; // Weaknesses to silver, holy water, blessed weapons, iron
-        public string Mythology; //Mythology of Origin
-        public enum ThreatLevel; // High, Mid, Low
-
-
-        public MonsterEntry(string name, string description) 
-        {
-            name = this.Name;
-            description = this.Description;
-        }
+        Low = 1,
+        Medium = 2,
+        High = 3,
+        Extreme = 4
     }
 
+    public class MonsterEntry 
+    {
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
 
+        [JsonPropertyName("name")]
+        public string Name { get; set; } = string.Empty;
+
+        [JsonPropertyName("description")]
+        public string Description { get; set; } = string.Empty;
+
+        [JsonPropertyName("weaknesses")]
+        public List<string> Weaknesses { get; set; } = new();
+
+        [JsonPropertyName("lore")]
+        public string Lore { get; set; } = string.Empty;
+
+        [JsonPropertyName("threat_level")]
+        public ThreatLevel ThreatLvl { get; set; }
+
+        [JsonPropertyName("origin")]
+        public string Origin { get; set; } = string.Empty;
+
+        public MonsterEntry(int id, string name, string description, List<string> weaknesses, string lore, ThreatLevel threatLvl, string origin)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Weaknesses = weaknesses;
+            Lore = lore;
+            ThreatLvl = threatLvl;
+            Origin = origin;
+        }
+    }
 }
