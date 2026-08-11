@@ -5,5 +5,8 @@ using System.Text.Json;
 
 namespace RogueHunters
 {
-    
+    class MonsterDatabase 
+    {
+        public MonsterDatabase() { }
+    }
 }
