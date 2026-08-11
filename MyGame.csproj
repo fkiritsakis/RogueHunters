@@ -28,6 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Assets\Entities\MonsterEntries.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\Screens\TittleScreen.xp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
