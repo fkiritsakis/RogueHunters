@@ -9,6 +9,55 @@
     ],
     "lore": "It is believed that a traveler can turn into a Wendigo when forced to consume human flesh, either for survival or during some twisted ritual",
     "threat_level": 1,
-    "origin": "Native American Folklore" 
+    "origin": "Native American Folklore"
+  },
+  {
+    "id": 2,
+    "name": "Karakondjul",
+    "description": "A dark, goblin-like nocturnal demon with a shaggy coat, buring red eyes, and sharp goat-like horns.",
+    "weaknesses": [
+      "Silver",
+      "Blessed Weapons",
+      "Holy Water"
+    ],
+    "lore": "Active during the dark winter days from Christmas to Epiphany, this monster tricks late-night travelers onto its back and rides them to exhaustion before throwing them off cliffs.",
+    "threat_level": 2,
+    "origin": "Balkan Foklore"
+  },
+  {
+    "id": 3,
+    "name": "Leshy",
+    "description": "A tall woodland guardian made of bark and roots, with green hair and eyes that glow like burning forest embers.",
+    "weaknesses": [
+      "Fire"
+    ],
+    "lore": "As the master of the deep forest, the Leshy can shrink to the size of a blade of grass or swell to the height of the tallest oak. It leads hunters astray by imitating human voices.",
+    "threat_level": 3,
+    "origin": "Slavic Folklore"
+  },
+  {
+    "id": 4,
+    "name": "Strigoi",
+    "description": "A reanimated corpse with gaunt features, elongated claws, and blood-soaked teeth rising from desecrated graves.",
+    "weaknesses": [
+      "Garlic",
+      "Iron Stakes through the Heart",
+      "Fire"
+    ],
+    "lore": "The troubled soul of a deceased person returning from the dead to absorb the vitality of their living relatives. It is considered a direct precursor to modern vampire legends.",
+    "threat_level": 3,
+    "origin": "Balkan (Romanian) Folklore"
+  },
+  {
+    "id": 5,
+    "name": "Samodiva",
+    "description": "An ethereal nymph of extreme beauty, wearing floating white gowns and glowing with mesmerizing woodland magic.",
+    "weaknesses": [
+      "Silver",
+      "Fire"
+    ],
+    "lore": "Slavic forest spirits that dance in moonlit clearings. Any mortal who witnesses their dance is lured into a trance and forced to dance until dying of total exhaustion.",
+    "threat_level": 2,
+    "origin": "Balkan / South Slavic Folklore"
   }
 ]
