@@ -59,5 +59,31 @@
     "lore": "Slavic forest spirits that dance in moonlit clearings. Any mortal who witnesses their dance is lured into a trance and forced to dance until dying of total exhaustion.",
     "threat_level": 2,
     "origin": "Balkan / South Slavic Folklore"
+  },
+  {
+    "id": 6,
+    "name": "Dybbuk",
+    "description": "A restless, invisible spirit that manifests as a harsh double-voice, violent spasms, and levitation within a human host.",
+    "weaknesses": [
+      "Exorcism Rites",
+      "Silver",
+      "Consecrated Relics"
+    ],
+    "lore": "A malicious spirit of a deceased person who, instead of moving on, wanders the earth to possess the bodies of living humans to complete unresolved evil tasks.",
+    "threat_level": 2,
+    "origin": "Abrahamic Folklore"
+  },
+  {
+    "id": 7,
+    "name": "Hellhound",
+    "description": "A massive, black-furred hound with eyes that burn like hot coals, leaving scorching footprints wherever it runs.",
+    "weaknesses": [
+      "Salt",
+      "Holy Water",
+      "Blessed Weapons"
+    ],
+    "lore": "Fearsome beasts tasked in medieval Christian demonology with hunting down condemned souls or guarding the gates to the underworld.",
+    "threat_level": 2,
+    "origin": "Christian Folklore"
   }
 ]
