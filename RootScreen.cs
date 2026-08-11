@@ -39,11 +39,14 @@ class RootScreen : ScreenObject
         _uiConsole.UseKeyboard = true;
         _uiConsole.UseMouse = true;
 
+        _uiConsole.Surface.DefaultBackground = Color.Transparent;
+        _uiConsole.Surface.Clear();
+
         //Create the buttons
         var btnNewHunter = new Button(btnWidth, btnHeight) 
         {
             Text = "New Hunter",
-            Position = new Point(centerX, 12)
+            Position = new Point(centerX, 42)
         };
         btnNewHunter.Click += BtnNewHunter_Click;
         _uiConsole.Controls.Add(btnNewHunter);
@@ -51,28 +54,28 @@ class RootScreen : ScreenObject
         var btnStartHutning = new Button(btnWidth, btnHeight)
         {
             Text = "Start Hunting",
-            Position = new Point(centerX, 14)
+            Position = new Point(centerX, 44)
         };
         _uiConsole.Controls.Add(btnStartHutning);
 
         var btnMonstrum = new Button(btnWidth, btnHeight)
         {
             Text = "Monstrum",
-            Position = new Point(centerX, 16)
+            Position = new Point(centerX, 46)
         };
         _uiConsole.Controls.Add(btnMonstrum);
 
         var btnOptions = new Button(btnWidth, btnHeight)
         {
             Text = "Options",
-            Position = new Point(centerX, 18)
+            Position = new Point(centerX, 48)
         };
         _uiConsole.Controls.Add(btnOptions);
 
         var btnExit = new Button(btnWidth, btnHeight)
         {
             Text = "Exit",
-            Position = new Point(centerX, 20)
+            Position = new Point(centerX, 50)
         };
         btnExit.Click += BtnQuit_Click;
         _uiConsole.Controls.Add(btnExit);

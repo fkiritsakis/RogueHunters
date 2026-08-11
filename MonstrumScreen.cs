@@ -10,7 +10,9 @@ class MonstrumScreen : ScreenObject
 {
     private ScreenSurface _mainSurface;
     private ControlsConsole _uiConsole;
-    private String _tittleScreenPath = "Assets/Screens/MonsterGlossaryScreen.xp";
+    private String _monsterScreenPath = "Assets/Screens/MonsterGlossaryScreen.xp";
+    private MonsterDatabase _monsterdb;
+    private MonsterEntry[] _monsters;
 
 
     //Button Settings //tbd add this to game settings maybe
@@ -24,7 +26,7 @@ class MonstrumScreen : ScreenObject
         centerX = (GameSettings.GAME_WIDTH - btnWidth) / 2;
 
         //Get the rexpaint image and save it as a variable
-        var rexDocument = SadConsole.Readers.REXPaintImage.Load(System.IO.File.OpenRead(_tittleScreenPath));
+        var rexDocument = SadConsole.Readers.REXPaintImage.Load(System.IO.File.OpenRead(_monsterScreenPath));
 
         var surface = rexDocument.ToCellSurface();
         var baseLayer = surface[0];
@@ -38,6 +40,9 @@ class MonstrumScreen : ScreenObject
 
         _uiConsole.UseKeyboard = true;
         _uiConsole.UseMouse = true;
+
+        _uiConsole.Surface.DefaultBackground = Color.Transparent;
+        _uiConsole.Surface.Clear();
 
     }
 }
