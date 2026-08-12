@@ -56,5 +56,8 @@ class MonstrumScreen : ScreenObject
             monsterList.Items.Add($"{monster.Id}.{monster.Name}");
         }
 
+        //Position the list box
+        monsterList.Position = new Point(5, 2);
+
     }
 }
