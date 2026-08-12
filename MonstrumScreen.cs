@@ -10,7 +10,8 @@ class MonstrumScreen : ScreenObject
 {
     private ScreenSurface _mainSurface;
     private ControlsConsole _uiConsole;
-    private String _monsterScreenPath = "Assets/Screens/MonsterGlossaryScreen.xp";
+    private string _monsterScreenPath = "Assets/Screens/MonsterGlossaryScreen.xp";
+    private string _monsterFilePath = "Assets/Entities/MonsterEntries.json";
     private MonsterDatabase _monsterdb;
     private MonsterEntry[] _monsters;
 
@@ -22,6 +23,8 @@ class MonstrumScreen : ScreenObject
 
     public MonstrumScreen()
     {
+        _monsterdb.LoadMonsters(_monsterFilePath);
+
 
         centerX = (GameSettings.GAME_WIDTH - btnWidth) / 2;
 
@@ -43,6 +46,15 @@ class MonstrumScreen : ScreenObject
 
         _uiConsole.Surface.DefaultBackground = Color.Transparent;
         _uiConsole.Surface.Clear();
+
+        //Create the list of monsters
+        ListBox monsterList = new ListBox(18, 18);
+
+        //Populate the list using the db
+        foreach (MonsterEntry monster in _monsterdb.Monsters) 
+        {
+            monsterList.Items.Add($"{monster.Id}.{monster.Name}");
+        }
 
     }
 }
