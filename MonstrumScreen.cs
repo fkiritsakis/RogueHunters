@@ -16,6 +16,16 @@ class MonstrumScreen : ScreenObject
     private MonsterDatabase _monsterdb;
     private MonsterEntry[] _monsters;
 
+    //UI
+    private ListBox _monsterList;
+    private Label _monsterName;
+    private Label _monsterOrigin;
+    private Label _monsterThreat;
+    private Label _monsterDescription;
+    private Label _monsterWeanesses;
+    private Label _monsterLore;
+
+    private Panel _monsterDescPanel;
 
     //Button Settings //tbd add this to game settings maybe
     public int btnWidth = 18;
@@ -49,22 +59,50 @@ class MonstrumScreen : ScreenObject
         _uiConsole.Surface.Clear();
 
         //Create the list of monsters
-        ListBox monsterList = new ListBox(18, 18);
+        _monsterList = new ListBox(18, 18);
 
         //Populate the list using the db
         foreach (MonsterEntry monster in _monsterdb.Monsters) 
         {
-            monsterList.Items.Add($"{monster.Id}.{monster.Name}");
+            _monsterList.Items.Add($"{monster.Id}.{monster.Name}");
         }
 
         //Position the list box
-        monsterList.Position = new Point(5, 2);
+        _monsterList.Position = new Point(2, 7);
         
-        _uiConsole.Controls.Add(monsterList);
+        //Add the list to control surface
+        _uiConsole.Controls.Add(_monsterList);
 
-        monsterList.SelectedItemChanged += selectedMonsterChanged;
+        _monsterList.SelectedItemChanged += selectedMonsterChanged;
 
+
+        //Initialize Labels
+        _monsterName = new Label(30) { Position = new Point(43,10) };
+        _monsterOrigin = new Label(30) { Position = new Point(45, 12) };
+        _monsterThreat = new Label(30) { Position = new Point(51, 14) };
+
+        //Initialize Panels
+        _monsterDescPanel = new Panel(39, 6) { Position = new Point(37, 21)};
+
+        //Add labels to UI Console
     }
 
-    private void selectedMonsterChanged(object? sender, ListBox.SelectedItemEventArgs e) { }
+    private void selectedMonsterChanged(object? sender, ListBox.SelectedItemEventArgs e) 
+    {
+        int selectedIndex = _monsterList.SelectedIndex;
+        if (selectedIndex < 0) 
+        {
+            return;
+        }
+
+        MonsterEntry monster = _monsterdb.Monsters[selectedIndex];
+
+        //Display the appropriate information on Labels
+        _monsterName.DisplayText = $"{monster.Name}";
+        _monsterOrigin.DisplayText = $"{monster.Origin}";
+        _monsterThreat.DisplayText = $"{monster.ThreatLvl}";
+
+        //Display the appropriate information on the Panels
+        
+    }
 }
