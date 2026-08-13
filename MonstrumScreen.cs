@@ -5,6 +5,7 @@ using SadConsole.UI;
 using SadConsole.UI.Controls;
 using SadRogue.Primitives;
 using System;
+using System.Runtime.CompilerServices;
 
 class MonstrumScreen : ScreenObject
 {
@@ -58,6 +59,12 @@ class MonstrumScreen : ScreenObject
 
         //Position the list box
         monsterList.Position = new Point(5, 2);
+        
+        _uiConsole.Controls.Add(monsterList);
+
+        monsterList.SelectedItemChanged += selectedMonsterChanged;
 
     }
+
+    private void selectedMonsterChanged(object? sender, ListBox.SelectedItemEventArgs e) { }
 }
