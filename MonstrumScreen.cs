@@ -21,9 +21,7 @@ class MonstrumScreen : ScreenObject
     private Label _monsterName;
     private Label _monsterOrigin;
     private Label _monsterThreat;
-    private Label _monsterDescription;
     private Label _monsterWeanesses;
-    private Label _monsterLore;
 
     private Panel _monsterDescPanel;
 
@@ -81,14 +79,16 @@ class MonstrumScreen : ScreenObject
         _monsterOrigin = new Label(30) { Position = new Point(45, 12) };
         _monsterThreat = new Label(30) { Position = new Point(51, 14) };
 
-        //Initialize Panels
-        _monsterDescPanel = new Panel(39, 6) { Position = new Point(37, 21)};
 
         //Add labels to UI Console
+        _uiConsole.Controls.Add(_monsterName);
+        _uiConsole.Controls.Add(_monsterOrigin);
+        _uiConsole.Controls.Add(_monsterThreat);
     }
 
     private void selectedMonsterChanged(object? sender, ListBox.SelectedItemEventArgs e) 
     {
+        _uiConsole.IsDirty = true;
         int selectedIndex = _monsterList.SelectedIndex;
         if (selectedIndex < 0) 
         {
@@ -101,8 +101,13 @@ class MonstrumScreen : ScreenObject
         _monsterName.DisplayText = $"{monster.Name}";
         _monsterOrigin.DisplayText = $"{monster.Origin}";
         _monsterThreat.DisplayText = $"{monster.ThreatLvl}";
+        //Add a method to change threat level text color according to severity (1-3)
 
         //Display the appropriate information on the Panels
-        
+        _uiConsole.Print(37, 21, (ColoredString)monster.Description.WordWrap(39)); //Test to see if this actualy prints the description string in a desirable manner
+
+        _uiConsole.Print(37, 26, (ColoredString)monster.Lore.WordWrap(39));
+
+
     }
 }
