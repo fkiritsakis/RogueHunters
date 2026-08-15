@@ -32,6 +32,7 @@ class MonstrumScreen : ScreenObject
 
     public MonstrumScreen()
     {
+        _monsterdb = new MonsterDatabase();
         _monsterdb.LoadMonsters(_monsterFilePath);
 
 
@@ -84,6 +85,9 @@ class MonstrumScreen : ScreenObject
         _uiConsole.Controls.Add(_monsterName);
         _uiConsole.Controls.Add(_monsterOrigin);
         _uiConsole.Controls.Add(_monsterThreat);
+
+        //Add surfaces to Children
+        //Maybe this is not the correct place to do this and this should be done in the Root Screen class
     }
 
     private void selectedMonsterChanged(object? sender, ListBox.SelectedItemEventArgs e) 
@@ -100,8 +104,28 @@ class MonstrumScreen : ScreenObject
         //Display the appropriate information on Labels
         _monsterName.DisplayText = $"{monster.Name}";
         _monsterOrigin.DisplayText = $"{monster.Origin}";
-        _monsterThreat.DisplayText = $"{monster.ThreatLvl}";
-        //Add a method to change threat level text color according to severity (1-3)
+
+        //Handle Threat Level Text and Color
+        switch (monster.ThreatLvl)
+        {
+            case ThreatLevel.Low:
+                _monsterThreat.DisplayText = "Low";
+                break;
+            case ThreatLevel.Medium:
+                _monsterThreat.DisplayText = "Medium";
+                break;
+            case ThreatLevel.High:
+                _monsterThreat.DisplayText = "High";
+                break;
+            case ThreatLevel.Extreme:
+                _monsterThreat.DisplayText = "Extreme";
+                break;
+            default:
+                break;
+        }
+
+        //Set the Threat Level Label Text Color
+        _monsterThreat.TextColor = threatColor(monster.ThreatLvl);
 
         //Display the appropriate information on the Panels
         _uiConsole.Print(37, 21, (ColoredString)monster.Description.WordWrap(39)); //Test to see if this actualy prints the description string in a desirable manner
@@ -109,5 +133,30 @@ class MonstrumScreen : ScreenObject
         _uiConsole.Print(37, 26, (ColoredString)monster.Lore.WordWrap(39));
 
 
+    }
+
+    private Color threatColor (ThreatLevel threatLvl) 
+    {
+        Color selectedColor = Color.AntiqueWhite;
+
+        switch (threatLvl)
+        {
+            case ThreatLevel.Low: //Low
+                selectedColor = Color.AnsiGreen;
+                break;
+            case ThreatLevel.Medium: //Medium
+                selectedColor= Color.AnsiMagenta;
+                break;
+            case ThreatLevel.High: //High
+                selectedColor = Color.AnsiRed;
+                break;
+            case ThreatLevel.Extreme: //Extreme
+                selectedColor = Color.DarkRed;
+                break;
+            default:
+                break;
+        }
+
+        return selectedColor;
     }
 }
