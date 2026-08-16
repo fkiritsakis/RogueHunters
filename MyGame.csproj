@@ -31,6 +31,9 @@
     <None Update="Assets\Entities\MonsterEntries.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Assets\Screens\MonsterGlossaryScreen.xp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\Screens\TittleScreen.xp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

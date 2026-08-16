@@ -21,9 +21,7 @@ class MonstrumScreen : ScreenObject
     private Label _monsterName;
     private Label _monsterOrigin;
     private Label _monsterThreat;
-    private Label _monsterWeanesses;
-
-    private Panel _monsterDescPanel;
+    private Label _monsterWeaknesses;
 
     //Button Settings //tbd add this to game settings maybe
     public int btnWidth = 18;
@@ -76,23 +74,37 @@ class MonstrumScreen : ScreenObject
 
 
         //Initialize Labels
-        _monsterName = new Label(30) { Position = new Point(43,10) };
-        _monsterOrigin = new Label(30) { Position = new Point(45, 12) };
-        _monsterThreat = new Label(30) { Position = new Point(51, 14) };
+        _monsterName = new Label(20) { Position = new Point(43,10) };
+        _monsterOrigin = new Label(20) { Position = new Point(45, 12) };
+        _monsterThreat = new Label(20) { Position = new Point(51, 14) };
 
 
         //Add labels to UI Console
         _uiConsole.Controls.Add(_monsterName);
         _uiConsole.Controls.Add(_monsterOrigin);
         _uiConsole.Controls.Add(_monsterThreat);
-
-        //Add surfaces to Children
-        //Maybe this is not the correct place to do this and this should be done in the Root Screen class
     }
 
     private void selectedMonsterChanged(object? sender, ListBox.SelectedItemEventArgs e) 
     {
         _uiConsole.IsDirty = true;
+
+        //Clear the Description and Lore sections
+        _uiConsole.Clear(37, 21,39);
+        _uiConsole.Clear(37, 22, 39);
+        _uiConsole.Clear(37, 23, 39);
+        _uiConsole.Clear(37, 24, 39);
+        _uiConsole.Clear(37, 25, 39);
+        _uiConsole.Clear(37, 26, 39);
+
+        _uiConsole.Clear(37, 46, 39);
+        _uiConsole.Clear(37, 47, 39);
+        _uiConsole.Clear(37, 48, 39);
+        _uiConsole.Clear(37, 49, 39);
+        _uiConsole.Clear(37, 50, 39);
+        _uiConsole.Clear(37, 51, 39);
+        _uiConsole.Clear(37, 52, 39);
+
         int selectedIndex = _monsterList.SelectedIndex;
         if (selectedIndex < 0) 
         {
@@ -127,12 +139,30 @@ class MonstrumScreen : ScreenObject
         //Set the Threat Level Label Text Color
         _monsterThreat.TextColor = threatColor(monster.ThreatLvl);
 
-        //Display the appropriate information on the Panels
-        _uiConsole.Print(37, 21, (ColoredString)monster.Description.WordWrap(39)); //Test to see if this actualy prints the description string in a desirable manner
+        // 1. Get wrapped lines for Description and print them line-by-line
+        int descY = 21;
+        foreach (string line in monster.Description.WordWrap(39))
+        {
+            _uiConsole.Print(37, descY++, line);
+        }
 
-        _uiConsole.Print(37, 26, (ColoredString)monster.Lore.WordWrap(39));
+        // 2. Get wrapped lines for Lore and print them line-by-line
+        int loreY = 46;
+        foreach (string line in monster.Lore.WordWrap(39))
+        {
+            _uiConsole.Print(37, loreY++, line);
+        }
 
+    }
 
+    public ScreenSurface GetMainSurface() 
+    {
+        return _mainSurface;
+    }
+
+    public ControlsConsole GetControlConsole() 
+    {
+        return _uiConsole;
     }
 
     private Color threatColor (ThreatLevel threatLvl) 

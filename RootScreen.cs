@@ -9,7 +9,7 @@ using System;
 class RootScreen : ScreenObject
 {
     private ScreenSurface _mainSurface;
-    private ControlsConsole _uiConsole;
+    private ControlsConsole _uiMainMenuConsole;
     private String _tittleScreenPath = "Assets/Screens/TittleScreen.xp";
 
 
@@ -34,13 +34,13 @@ class RootScreen : ScreenObject
 
         baseLayer.Copy(_mainSurface.Surface);
 
-        _uiConsole = new ControlsConsole(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
+        _uiMainMenuConsole = new ControlsConsole(GameSettings.GAME_WIDTH, GameSettings.GAME_HEIGHT);
 
-        _uiConsole.UseKeyboard = true;
-        _uiConsole.UseMouse = true;
+        _uiMainMenuConsole.UseKeyboard = true;
+        _uiMainMenuConsole.UseMouse = true;
 
-        _uiConsole.Surface.DefaultBackground = Color.Transparent;
-        _uiConsole.Surface.Clear();
+        _uiMainMenuConsole.Surface.DefaultBackground = Color.Transparent;
+        _uiMainMenuConsole.Surface.Clear();
 
         //Create the buttons
         var btnNewHunter = new Button(btnWidth, btnHeight) 
@@ -49,28 +49,33 @@ class RootScreen : ScreenObject
             Position = new Point(centerX, 42)
         };
         btnNewHunter.Click += BtnNewHunter_Click;
-        _uiConsole.Controls.Add(btnNewHunter);
+        _uiMainMenuConsole.Controls.Add(btnNewHunter);
 
         var btnStartHutning = new Button(btnWidth, btnHeight)
         {
             Text = "Start Hunting",
             Position = new Point(centerX, 44)
         };
-        _uiConsole.Controls.Add(btnStartHutning);
+        btnStartHutning.Click += BtnStartHunting_Click;
+        _uiMainMenuConsole.Controls.Add(btnStartHutning);
 
         var btnMonstrum = new Button(btnWidth, btnHeight)
         {
             Text = "Monstrum",
             Position = new Point(centerX, 46)
         };
-        _uiConsole.Controls.Add(btnMonstrum);
+        btnMonstrum.Click += BtnMonstrum_Click;
+        _uiMainMenuConsole.Controls.Add(btnMonstrum);
+        
+        
 
         var btnOptions = new Button(btnWidth, btnHeight)
         {
             Text = "Options",
             Position = new Point(centerX, 48)
         };
-        _uiConsole.Controls.Add(btnOptions);
+        btnOptions.Click += BtnOptions_Click;
+        _uiMainMenuConsole.Controls.Add(btnOptions);
 
         var btnExit = new Button(btnWidth, btnHeight)
         {
@@ -78,13 +83,13 @@ class RootScreen : ScreenObject
             Position = new Point(centerX, 50)
         };
         btnExit.Click += BtnQuit_Click;
-        _uiConsole.Controls.Add(btnExit);
+        _uiMainMenuConsole.Controls.Add(btnExit);
 
         // Add _mainSurface as a child object of this one. This object, RootScreen, is a simple object
         // and doesn't display anything itself. Since _mainSurface is going to be a child of it, _mainSurface
         // will be displayed.
         Children.Add(_mainSurface);
-        Children.Add(_uiConsole);
+        Children.Add(_uiMainMenuConsole);
     }
 
     void BtnNewHunter_Click(object sender, EventArgs e) 
@@ -99,7 +104,21 @@ class RootScreen : ScreenObject
 
     void BtnMonstrum_Click(object sender, EventArgs e)
     {
-        System.Diagnostics.Debug.WriteLine("Monstrum Button Clicked!");
+        //Clear all consoles
+        Children.Clear();
+
+        //Create a new monstrum Screen object
+        MonstrumScreen monstrumScreen = new MonstrumScreen();
+
+        //Set mainsurface and uiconsole to monstrum surface and console
+        _mainSurface = monstrumScreen.GetMainSurface();
+        _uiMainMenuConsole = monstrumScreen.GetControlConsole();
+
+        //Add them as children again
+        Children.Add(_mainSurface);
+        Children.Add(_uiMainMenuConsole);
+
+        //System.Diagnostics.Debug.WriteLine("Monstrum Button Clicked!");
     }
 
     void BtnOptions_Click(object sender, EventArgs e)
