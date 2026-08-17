@@ -85,5 +85,70 @@
     "lore": "Fearsome beasts tasked in medieval Christian demonology with hunting down condemned souls or guarding the gates to the underworld.",
     "threat_level": 2,
     "origin": "Christian Folklore"
+  },
+  {
+    "id": 8,
+    "name": "Draugr",
+    "description": "An undead corpse swollen to immense weight, with decaying blue-black flesh and the stench of graves and rotting seaweed.",
+    "weaknesses": [
+      "Iron",
+      "Decapitation",
+      "Fire"
+    ],
+    "lore": "Reanimated dead warriors who guard their burial mounds with unnatural strength. They can alter their size, step through earth, and drive travelers mad.",
+    "threat_level": 3,
+    "origin": "Norse Folklore"
+  },
+  {
+    "id": 9,
+    "name": "Nuckelavee",
+    "description": "A skinless, grotesque terror fusing a human torso directly to the back of a horse, with black blood flowing visible in yellow veins.",
+    "weaknesses": [
+      "Fresh Running Water",
+      "Fire",
+      "Blessed Salt"
+    ],
+    "lore": "A abhorrent sea pestilence that ventures onto land during cold nights, breath withering crops and spreading plague among livestock.",
+    "threat_level": 3,
+    "origin": "Orcadian (Celtic) Folklore"
+  },
+  {
+    "id": 10,
+    "name": "Kallikantzaros",
+    "description": "A small, scrawny, ape-like creature with dark fur, long ears, red eyes, and a crooked tail.",
+    "weaknesses": [
+      "Colander Traps",
+      "Fireplace Flames",
+      "Holy Water"
+    ],
+    "lore": "Subterranean imps that surface only during the Twelve Days of Christmas. They cause chaos in villages, spoiling food, tangling threads, and scaring late-night wanderers.",
+    "threat_level": 1,
+    "origin": "Greek Folklore"
+  },
+  {
+    "id": 11,
+    "name": "Manananggal",
+    "description": "An elder woman whose upper torso detaches at the waist, sprouting giant bat-like wings and a long tubular tongue.",
+    "weaknesses": [
+      "Garlic",
+      "Salt",
+      "Ash"
+    ],
+    "lore": "A predatory nocturnal creature that hunts from the air while its lower half remains hidden in the brush. Exposing its lower body to salt or sunlight destroys it.",
+    "threat_level": 3,
+    "origin": "Filipino Folklore"
+  },
+  {
+    "id": 12,
+    "name": "Cailleach",
+    "description": "An ancient, blue-faced hag adorned with a dark cloak, carrying a heavy wooden staff that freezes the ground where it strikes.",
+    "weaknesses": [
+      "Rowan Wood",
+      "Fire",
+      "Spring Sunlight"
+    ],
+    "lore": "A winter crone who brings the bitter cold and frost. She reshapes mountains with her hammer and turns to stone when the warm seasonal sun appears.",
+    "threat_level": 2,
+    "origin": "Gaelic / Scottish Folklore"
   }
 ]

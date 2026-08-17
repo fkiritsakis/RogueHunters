@@ -65,7 +65,7 @@ class MonstrumScreen : ScreenObject
         }
 
         //Position the list box
-        _monsterList.Position = new Point(2, 7);
+        _monsterList.Position = new Point(3, 7);
         
         //Add the list to control surface
         _uiConsole.Controls.Add(_monsterList);
@@ -89,13 +89,18 @@ class MonstrumScreen : ScreenObject
     {
         _uiConsole.IsDirty = true;
 
-        //Clear the Description and Lore sections
+        //Clear the Description, Weakness and Lore sections
         _uiConsole.Clear(37, 21,39);
         _uiConsole.Clear(37, 22, 39);
         _uiConsole.Clear(37, 23, 39);
         _uiConsole.Clear(37, 24, 39);
         _uiConsole.Clear(37, 25, 39);
         _uiConsole.Clear(37, 26, 39);
+
+        _uiConsole.Clear(37, 33, 39);
+        _uiConsole.Clear(37, 34, 39);
+        _uiConsole.Clear(37, 35, 39);
+        _uiConsole.Clear(37, 36, 39);
 
         _uiConsole.Clear(37, 46, 39);
         _uiConsole.Clear(37, 47, 39);
@@ -139,14 +144,21 @@ class MonstrumScreen : ScreenObject
         //Set the Threat Level Label Text Color
         _monsterThreat.TextColor = threatColor(monster.ThreatLvl);
 
-        // 1. Get wrapped lines for Description and print them line-by-line
+        //Get wrapped lines for Description and print them line-by-line
         int descY = 21;
         foreach (string line in monster.Description.WordWrap(39))
         {
             _uiConsole.Print(37, descY++, line);
         }
 
-        // 2. Get wrapped lines for Lore and print them line-by-line
+        //Get Weakness entries and print them line-by-line
+        int weaknessY = 33;
+        foreach(string weakness in monster.Weaknesses) 
+        {
+            _uiConsole.Print(37, weaknessY++, weakness);
+        }
+
+        //Get wrapped lines for Lore and print them line-by-line
         int loreY = 46;
         foreach (string line in monster.Lore.WordWrap(39))
         {
