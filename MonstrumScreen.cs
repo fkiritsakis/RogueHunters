@@ -177,6 +177,20 @@ class MonstrumScreen : ScreenObject
         return _uiConsole;
     }
 
+    #region Getting the previous Console and Surface to be used in the Back Button
+    public ScreenSurface SetPreviousScreenSurface(ScreenSurface screenSurface) 
+    {
+        ScreenSurface previousScreen = screenSurface;
+        return previousScreen;
+    }
+
+    public ControlsConsole SetPreviousControlsConsole(ControlsConsole controlsConsole) 
+    {
+        ControlsConsole previousControlsConsole = controlsConsole;
+        return previousControlsConsole;
+    }
+    #endregion
+
     private Color threatColor (ThreatLevel threatLvl) 
     {
         Color selectedColor = Color.AntiqueWhite;

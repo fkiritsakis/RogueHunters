@@ -117,8 +117,6 @@ class RootScreen : ScreenObject
         //Add them as children again
         Children.Add(_mainSurface);
         Children.Add(_uiMainMenuConsole);
-
-        //System.Diagnostics.Debug.WriteLine("Monstrum Button Clicked!");
     }
 
     void BtnOptions_Click(object sender, EventArgs e)
