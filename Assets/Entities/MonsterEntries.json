@@ -83,7 +83,7 @@
       "Blessed Weapons"
     ],
     "lore": "Fearsome beasts tasked in medieval Christian demonology with hunting down condemned souls or guarding the gates to the underworld.",
-    "threat_level": 2,
+    "threat_level": 4,
     "origin": "Christian Folklore"
   },
   {
@@ -96,7 +96,7 @@
       "Fire"
     ],
     "lore": "Reanimated dead warriors who guard their burial mounds with unnatural strength. They can alter their size, step through earth, and drive travelers mad.",
-    "threat_level": 3,
+    "threat_level": 4,
     "origin": "Norse Folklore"
   },
   {
