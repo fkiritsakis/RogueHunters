@@ -49,15 +49,22 @@ namespace RogueHunters
         int Instinct;
 
         //Stats
+        Limb[] Limbs;
+
+        //Statistics
+        int TotalHunts;
+        int SuccessfulHunts;
+        int FailedHunts;
 
 
-        public Hunter(string hunterName, int hunterObservation, int hunterLore, int hunterNerves, int hunterInstinct) 
+        public Hunter(string hunterName, int hunterObservation, int hunterLore, int hunterNerves, int hunterInstinct, Limb[] hunterLimbs) 
         {
             this.Name = hunterName;
             this.Observation = hunterObservation;
             this.Lore = hunterLore;
             this.Nerves = hunterNerves;
             this.Instinct = hunterInstinct;
+            this.Limbs = hunterLimbs;
         }
     }
 }
