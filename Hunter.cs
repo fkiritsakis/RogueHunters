@@ -6,7 +6,8 @@ namespace RogueHunters
 {
     public class Hunter
     {
-        string Name;
+        public string Name;
+        public string FamilyName;
 
         /// <summary>
         /// All four skills have effects and rolls both in Investigation phase and in
@@ -52,14 +53,15 @@ namespace RogueHunters
         Limb[] Limbs;
 
         //Statistics
-        int TotalHunts;
-        int SuccessfulHunts;
-        int FailedHunts;
+        public int TotalHunts;
+        public int SuccessfulHunts;
+        public int FailedHunts;
 
 
-        public Hunter(string hunterName, int hunterObservation, int hunterLore, int hunterNerves, int hunterInstinct, Limb[] hunterLimbs) 
+        public Hunter(string hunterName, string hunterFamilyName, int hunterObservation, int hunterLore, int hunterNerves, int hunterInstinct, Limb[] hunterLimbs) 
         {
             this.Name = hunterName;
+            this.FamilyName = hunterFamilyName;
             this.Observation = hunterObservation;
             this.Lore = hunterLore;
             this.Nerves = hunterNerves;
