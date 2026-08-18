@@ -58,7 +58,8 @@ namespace RogueHunters
         public int FailedHunts;
 
 
-        public Hunter(string hunterName, string hunterFamilyName, int hunterObservation, int hunterLore, int hunterNerves, int hunterInstinct, Limb[] hunterLimbs) 
+        public Hunter(string hunterName, string hunterFamilyName, int hunterObservation, 
+            int hunterLore, int hunterNerves, int hunterInstinct, Limb[] hunterLimbs) 
         {
             this.Name = hunterName;
             this.FamilyName = hunterFamilyName;
